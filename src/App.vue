@@ -1,15 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<h1>{{tittle}} </h1>
+<input type="text" ref="name">
+<button @click="handleClick"> click me</button>
+<ModalHeader/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ModalHeader from "./components/ModalHeader.vue"
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { ModalHeader },
+  data(){
+    return{
+      tittle:'My First Vue App :)'
+    }
+  },
+  methods:{
+    handleClick(){
+      console.log(this.$refs.name)
+      this.$refs.name.classList.add('active')
+      this.$refs.name.focus()
+    }
   }
 }
 </script>
@@ -22,5 +34,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app h1{
+  border-bottom:2px solid #2c3e50;
+  display: inline-block;
 }
 </style>
